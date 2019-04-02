@@ -7,15 +7,15 @@ let request = require('request');
  * @param {object} res response object used in request().
  * @param {object} flickrJson Json parsed Flickr response.
  */
-function gatherPicturesObjects(res, flickrJson) {
+function gatherPicturesObjects(req, res, flickrJson) {
   let imagesArray = [];
-
   flickrJson.photos.photo.forEach(function(photo) {
     let photoNode = {
       id: photo.id,
       farm: photo.farm,
       title: photo.title,
-      secret: photo.secret
+      secret: photo.secret,
+      server: photo.server,
     }
     imagesArray.push(photoNode);
   })
@@ -24,14 +24,20 @@ function gatherPicturesObjects(res, flickrJson) {
 
 /**
  * Exportable function which handles Flickr api call.
+ * @param {object} req representation of HTTP request.
+ * @param {object} res representation of HTTP response.
  */
 module.exports.getPhotos = function retreivePhotos(req, res) {
-  request(flickrUrl + '?method=flickr.photos.getRecent&api_key='+ constants.apiKey +'&format=json&nojsoncallback=1', function(err, response, body) {
-    if (err) {
-      res.status(422).send(err);
-      return;
-    }
-    gatherPicturesObjects(res, JSON.parse(body));
+  //Get page number from query parameters sent by frontend.
+  let page = req.params.page;
+
+  request(flickrUrl + '?method=flickr.photos.getRecent&api_key='+ constants.apiKey +'&per_page=10&page=' + page + '&format=json&nojsoncallback=1', 
+    function(err, response, body) {
+      if (err) {
+        res.status(422).send(err);
+        return;
+      }
+      gatherPicturesObjects(req, res, JSON.parse(body));
   });
 }
 

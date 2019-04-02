@@ -5,6 +5,6 @@ var photosController = require('../controllers/photosController.js');
  * and assigns corresponding functions from controller.
  */
 module.exports = function(app) {
-  app.get('/get-recent', photosController.getPhotos);
+  app.get('/get-recent&page=:page', photosController.getPhotos);
 }
 

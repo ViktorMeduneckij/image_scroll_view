@@ -1,0 +1,39 @@
+.photo-node {
+  box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.25); 
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  padding: 5px;
+  @media only screen and (max-width: 900px) {
+    margin: 0 auto 20px auto;
+    max-width: 500px;
+    text-align: center;
+  }
+
+  .photo-wrapper {
+    display: inline-block;
+    max-width: 500px;
+    vertical-align: middle;
+    text-align: center;
+    width: 100%;
+    @media only screen and (max-width: 900px) {
+      display: block;
+    }
+  }
+
+  p {
+    display: inline-block;
+    font-weight: 700;
+    font-style: italic;
+    max-width: 380px;
+    padding-left: 10px;
+    @media only screen and (max-width: 900px) {
+      display: block;
+      max-width: unset;
+    } 
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
