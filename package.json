@@ -4,12 +4,15 @@
   "description": "Simple node application",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "author": "Viktor Meduneckij",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4",
+    "path": "^0.12.7",
     "request": "^2.88.0"
   }
 }
