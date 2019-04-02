@@ -5,9 +5,13 @@ class Photo extends React.Component {
     return(
       <div className="photo-node">
         <div className="photo-wrapper">
-          <img src={'https://farm' + this.props.farm +'.staticflickr.com/' + this.props.server + '/' + this.props.id + '_' + this.props.secret + '.jpg' } alt={ this.props.title }/>
+          <img src={'https://farm' + this.props.farm + 
+            '.staticflickr.com/' + this.props.server + 
+            '/' + this.props.id + '_' + this.props.secret + '.jpg' } 
+            alt={ this.props.title }
+          />
         </div>
-        <p> { this.props.title ? this.props.title : 'This image has no title.'  }</p>
+        <p> { this.props.title }</p>
       </div>
     );
   }
