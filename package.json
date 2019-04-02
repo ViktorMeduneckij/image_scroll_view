@@ -1,0 +1,15 @@
+{
+  "name": "image_scroll_view",
+  "version": "1.0.0",
+  "description": "Simple node application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Viktor Meduneckij",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "request": "^2.88.0"
+  }
+}
