@@ -1,5 +1,6 @@
 # Image scroll view
 A simple application with `Node` backend and `React` frontend. 
+Communication is done via proxy, which is specified in `client`'s `package.json`. 
 Frontend makes calls to backend, which communicates with Flickr API.
 
 [Application is hosted on Heroku, and can be viewed here](https://image-scroll-view.herokuapp.com/)
