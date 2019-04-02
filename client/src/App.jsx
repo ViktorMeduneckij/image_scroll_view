@@ -1,5 +1,6 @@
 import React from 'react';
 import Photo from './components/Photo';
+import Sorter from './components/Sorter';
 
 class App extends React.Component {
   constructor(props) {
@@ -52,7 +53,7 @@ class App extends React.Component {
     fetch('/get-recent&page=' + this.state.page)
       .then((response) => {
         if (!response.ok) {
-          console.log('Failed to get photos.');
+          alert('Server issues, try refreshing website.')
           return;
         }
         return response.json();
@@ -85,15 +86,24 @@ class App extends React.Component {
     );
   }
 
+  getSortedPhotos(photos) {
+    this.setState({
+      photos
+    })
+  }
+
   render() {
     return !!this.state.photos.length && (
       <div className="home-content wrapper">
         <div className="greeting">
           <h1>Image scroll view</h1>
-          <h2>Task for Zenitech</h2>
           <p>Showing 10 photos per page.</p>
         </div>
-        {this.renderPhotos()}
+        { this.renderPhotos() } 
+        <Sorter 
+          photos = { this.state.photos }
+          sendSortedPhotos = { this.getSortedPhotos.bind(this) }
+        />
       </div>
     );
   }
