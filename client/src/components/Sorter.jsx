@@ -1,13 +1,6 @@
 import React from 'react';
 
 class Sorter extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      btnText: 'Sort photos alphabetically!'
-    }
-  }
-
   sortPhotos() {
     this.props.photos.sort(function(a, b) {
       var aTitle = a.title.toUpperCase();
@@ -16,9 +9,6 @@ class Sorter extends React.Component {
     })
     //Send sorted photos to parent App.
     this.props.sendSortedPhotos(this.props.photos);
-    this.setState({
-      btnText: 'All sorted!'
-    })
   }
 
   render() {
@@ -26,7 +16,7 @@ class Sorter extends React.Component {
       <div
         className = "sorter"
         onClick= { this.sortPhotos.bind(this) }>
-        { this.state.btnText }
+        Sort photos alphabetically!
         </div>
     );
   }
